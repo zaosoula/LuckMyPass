@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Luck My Pass</title>
+    <link rel="stylesheet" href="master.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+
+        <div v-if="password !== false">
+            <button class="open" v-on:click="cpage('menu')"><i class="fab fa-elementor"></i></button>
+            <div id="menu" v-if="page === 'menu'">
+                <h3>Que voulez vous faire ?</h3>
+                <button v-on:click="cpage('add')">Ajouter des identifiants</button>
+                <button v-on:click="cpage('gen')">Générer un mot de passe sécurisé</button>
+                <button v-on:click="cpage('home')">Voir mes identifiants</button>
+            </div>
+            <div id="add" v-else-if="page === 'add'">
+                <input type="text" placeholder="domain" v-model="newdomain">
+                <input type="text" placeholder="id" v-model="newid">
+                <input type="password" placeholder="pass" v-model="newpass">
+                <button v-on:click="add()">Ajouter ces identifiants</button>
+            </div>
+            <div id="gen" v-else-if="page === 'gen'">
+                <input type="text" v-model="freepass">
+                <button v-on:click="password_gen()">Générer</button>
+            </div>
+            <div id="home" v-else>
+                <input type="text" placeholder="Name" v-model="search">
+                <ul id="list">
+                    <li v-for="item in passwords" v-if="down(item.domain)">
+                        <button v-on:click="changestate(item)">{{item.domain}}</button>
+                        <div class="subctn" v-bind:class="{ active: item.show }">
+                            <input type="text" v-model="item.id">
+                            <input type="text" v-model="item.pass">
+                            <button v-on:click="suppr(item.domain)">x</button>
+                            <button v-on:click="update(item.domain)">-></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div v-else>
+            <input type="password" v-model="acpassword">
+            <button v-on:click="testpass()">Connection</button>
+            <span>Si c'est la première fois que vous utilisez le logiciel, le mot de passe que vous utiliserez vous servira de mot de passe pour vous connecter plus tard</span>
+            <button v-on:click="changepath()">Selectionner l'emplacement des mots de passes</button>
+            <button v-on:click="changepathdefault()">Selectionner l'emplacement par défaut</button>
+        </div>
+
+    </div>
+    <script src="ress/vue"></script>
+    <script src="ress/master.js"></script>
+</body>
+</html>

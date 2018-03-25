@@ -1,0 +1,52 @@
+{
+  "name": "LuckMyPass",
+  "version": "0.2.2",
+  "description": "Un gestionnaire de mots de passes opensource",
+  "main": "password.js",
+  "scripts": {
+    "test": "electron ./password.js",
+    "package-win": "electron-packager . SoLucky --overwrite --platform=win32 --arch=x64 --out=release-builds --version-string.CompanyName=SoLucky --version-string.ProductName=1.0.0 --version-string.FileDescription=SoLucky",
+    "build": "electron-packager . SoLucky --ignore=node_modules/electron-*",
+    "dist": "build -w",
+    "dist-all": "build -mwl"
+  },
+  "keywords": [
+    "password"
+  ],
+  "author": "Thomas Tastet",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.4",
+    "electron-builder": "^20.0.5",
+    "electron-packager": "^10.1.2",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "electron-packager": "^10.1.1",
+    "electron-settings": "^3.1.4",
+    "menubar": "^5.2.3"
+  },
+  "build": {
+    "appId": "fr.thomast.luckmypass",
+    "compression": "maximum",
+    "asar": "false",
+    "win": {
+      "target": [
+        "NSIS",
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "tar.gz"
+      ],
+      "icon": "./logo.png",
+      "synopsis": "",
+      "description": "",
+      "category": "Password"
+    },
+    "mac": false
+  }
+}

@@ -141,7 +141,8 @@ ipcMain.on('remove-item', (event, arg) => {
 })
 
 ipcMain.on('password', (event, arg) => {
-    password = arg+'@5DZVa'
+    password = crypto.createHash('sha256').update(arg+'@5DZVa').digest('base64');
+
     fs.open(config_json.crypted_file_path, 'r', (err, fd) => {
     if (err) {
         if (err.code === 'ENOENT') {

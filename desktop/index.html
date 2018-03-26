@@ -11,9 +11,13 @@
 </head>
 <body>
     <div id="app">
+        <div class="success" v-if="successshow === true">
+            {{success}}
+            <span v-on:click="successshow = false"><i class="fas fa-times"></i></span>
+        </div>
 
         <div v-if="password !== false">
-            <button class="open" v-on:click="cpage('menu')"><i class="fab fa-elementor"></i></button>
+            <button class="open" v-on:click="cpage('menu')"><i class="far fa-compass"></i></button>
             <div id="menu" v-if="page === 'menu'">
                 <h3>Que voulez vous faire ?</h3>
                 <button v-on:click="cpage('add')">Ajouter des identifiants</button>

@@ -2,6 +2,8 @@ var app = new Vue({
     el: '#app',
     data: {
         page: 'menu',
+        successshow: false,
+        success: '',
         search: '',
         password: false,
         acpassword: '',
@@ -42,6 +44,12 @@ var app = new Vue({
                 pass: this.newpass,
                 show: false
             })
+            this.success = "L'identifiant au site "+this.newdomain+" a bien été enregistré"
+            this.newdomain = ''
+            this.newid = ''
+            this.newpass = ''
+            this.cpage('menu')
+            this.successshow = true
         },
         testpass: function () {
             var value = ipcRenderer.sendSync('password', this.acpassword)
@@ -70,6 +78,8 @@ var app = new Vue({
         },
         suppr: function (i) {
             this.passwords = ipcRenderer.sendSync('remove-item', i)
+            this.success = 'Cet identifiant a bien été supprimé'
+            this.successshow = true
         },
         update: function (i) {
 

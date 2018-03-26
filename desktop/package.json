@@ -1,6 +1,6 @@
 {
   "name": "LuckMyPass",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Un gestionnaire de mots de passes opensource",
   "main": "password.js",
   "scripts": {

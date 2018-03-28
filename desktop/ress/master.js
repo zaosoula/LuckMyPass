@@ -4,6 +4,8 @@ var app = new Vue({
         page: 'menu',
         successshow: false,
         success: '',
+        errorshow: false,
+        error: '',
         search: '',
         password: false,
         acpassword: '',
@@ -57,6 +59,10 @@ var app = new Vue({
                 this.password = true
                 this.acpassword = ''
                 this.passwords = ipcRenderer.sendSync('synchronous-message', 'ping')
+            }else{
+              console.log('pass error');
+              this.error = "Le mot de passe que vous avez rentré est invalide"
+              this.errorshow = true
             }
         },
         password_gen: function () {

@@ -15,6 +15,10 @@
             {{success}}
             <span v-on:click="successshow = false"><i class="fas fa-times"></i></span>
         </div>
+        <div class="error" v-if="errorshow === true">
+            {{error}}
+            <span v-on:click="errorshow = false"><i class="fas fa-times"></i></span>
+        </div>
 
         <div v-if="password !== false">
             <button class="open" v-on:click="cpage('menu')"><i class="far fa-compass"></i></button>
@@ -25,17 +29,17 @@
                 <button v-on:click="cpage('home')">Voir mes identifiants</button>
             </div>
             <div id="add" v-else-if="page === 'add'">
-                <input type="text" placeholder="domain" v-model="newdomain">
-                <input type="text" placeholder="id" v-model="newid">
-                <input type="password" placeholder="pass" v-model="newpass">
-                <button v-on:click="add()">Ajouter ces identifiants</button>
+                <input type="text" placeholder="Domaine" v-model="newdomain">
+                <input type="text" placeholder="Identifiant" v-model="newid">
+                <input type="password" placeholder="Mot de passe" v-model="newpass">
+                <button v-on:click="add()">Ajouter cet identifiant</button>
             </div>
             <div id="gen" v-else-if="page === 'gen'">
                 <input type="text" v-model="freepass">
                 <button v-on:click="password_gen()">Générer</button>
             </div>
             <div id="home" v-else>
-                <input type="text" placeholder="Name" v-model="search">
+                <input type="text" placeholder="Nom du domaine" v-model="search">
                 <ul id="list">
                     <li v-for="item in passwords" v-if="down(item.domain)">
                         <button v-on:click="changestate(item)">{{item.domain}}</button>

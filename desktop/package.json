@@ -1,5 +1,5 @@
 {
-  "name": "LuckMyPass",
+  "name": "luckmypass",
   "version": "0.3.0",
   "description": "Un gestionnaire de mots de passes opensource",
   "main": "password.js",
@@ -13,7 +13,8 @@
   "keywords": [
     "password"
   ],
-  "author": "Thomas Tastet",
+  "author": "Thomas Tastet (https://thomas-t.fr)",
+  "contributors": ["Zao Soula <contact@zaosoula.fr> (https://zaosoula.fr)"],
   "license": "ISC",
   "devDependencies": {
     "electron": "^1.8.4",

@@ -100,7 +100,7 @@ button {
     background: linear-gradient(135deg, #280684 0%, #21bdb8 100%);
 }
 
-.success {
+.success, .error {
     background-color: #2ecc71;
     color: white;
     text-align: center;
@@ -111,7 +111,11 @@ button {
     margin-left: -15px;
 }
 
-.success span {
+.error {
+  background-color: #dc2a2a;
+}
+
+.success span, .error span {
     position: absolute;
     top: 0;
     right: 0;
